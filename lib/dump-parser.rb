@@ -11,6 +11,9 @@ class DumpParser
   class << self
 
     def register(name,map=nil,&block)
+      if has_parser? name
+        raise ArgumentError,"a parser named #{name.inspect} is already registred"
+      end
       parser = self.new(name,map,block)
       registry[name]=parser
     end

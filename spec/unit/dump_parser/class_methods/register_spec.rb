@@ -45,4 +45,10 @@ describe DumpParser, '.register' do
     let(:map) { {} }
     it_should_behave_like 'a parser registration'
   end
+
+  context 'name was already regsitred' do
+    specify do
+      expect { object.register name,{} }.to raise_error(ArgumentError,"a parser named :test is already registred")
+    end
+  end
 end
