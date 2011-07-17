@@ -3,53 +3,46 @@
 require 'spec_helper'
 
 describe DumpParser, '.register' do
-  subject { object.register(name,map,&block) }
-
   let(:object)      { described_class }
   let(:name)        { :test }
   let(:block)       { nil }
   let(:map)         { nil }
+  let(:parser)      { Object.new }
+
+  let(:returned_parser) { @returned_parser }
 
   before do
     object.reset!
+    object.should_receive(:new).with(name,map,block).and_return(parser)
+    @returned_parser = object.register(name,map,&block)
   end
 
   shared_examples_for 'a parser registration' do
-    it { should have_parser(name) }
-    it { should == described_class }
+    context 'returned parser' do
+      subject { returned_parser }
+      it { should == parser }
+    end
+
+    context 'registry' do
+      subject { object }
+      it { should have_parser name }
+      its(:names) { should include(name) }
+    end
   end
 
   context 'with block' do
     let(:block) { lambda { "value" } }
-
-    it 'should create a DumpParser object with block' do
-      described_class.should_receive(:new).with(name,nil,block).and_return(Object.new)
-      subject
-    end
-
     it_should_behave_like 'a parser registration'
   end
 
   context 'with map' do
     let(:map) { {} }
-
-    it 'should create a DumpParser object with map' do
-      described_class.should_receive(:new).with(name,map,nil).and_return(Object.new)
-      subject
-    end
-
     it_should_behave_like 'a parser registration'
   end
 
   context 'with map and block' do
     let(:block) { lambda { "value" } }
     let(:map) { {} }
-
-    it 'should create a DumpParser object with map and block' do
-      described_class.should_receive(:new).with(name,map,block).and_return(Object.new)
-      subject
-    end
-
     it_should_behave_like 'a parser registration'
   end
 end

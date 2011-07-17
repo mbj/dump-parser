@@ -11,7 +11,10 @@ class DumpParser
     def register(name,map=nil,&block)
       parser = self.new(name,map,block)
       registry[name]=parser
-      self
+    end
+
+    def lookup(name)
+      registry[name] || raise(ArgumentError,"a parser named #{name.inspect} is not registred")
     end
 
     def has_parser?(name)
