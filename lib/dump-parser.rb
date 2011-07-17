@@ -2,6 +2,8 @@
 
 class DumpParser
 
+  attr_reader :name
+
   def initialize(name,map=nil,block=nil)
     @name,@map,@block = name,map,block
   end
@@ -17,12 +19,10 @@ class DumpParser
       registry[name] || raise(ArgumentError,"a parser named #{name.inspect} is not registred")
     end
 
+    alias :[] :lookup
+
     def has_parser?(name)
       registry.key? name
-    end
-
-    def [](name)
-      registry[name]
     end
 
     def reset!
