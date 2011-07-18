@@ -69,6 +69,22 @@ describe DumpParser, '#execute' do
       end
     end
 
+    context 'error_if_empty' do
+      let(:block) { Proc.new { error_if_empty } }
+
+      context 'when empty' do
+        let(:value) { '' }
+        specify do 
+          expect { subject }.to raise_error(DumpParser::ParseError,'test: value "" must not be empty')
+        end
+      end
+
+      context 'when not empty' do
+        let(:value) { 'test' }
+        it { should == value } 
+      end
+    end
+
     context 'require_format' do
       let(:pattern) { %r(\Aabc\Z) }
       let(:block) { pattern = self.pattern; Proc.new { require_format pattern } }

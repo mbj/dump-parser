@@ -50,6 +50,15 @@ class DumpParser
     end
   end
 
+  def error_if_empty
+    value = self.value
+    if value.empty?
+      parse_error 'must not be empty'
+    else
+      value
+    end
+  end
+
   def require_format(format)
     value = self.value
     @last_match = format.match value
