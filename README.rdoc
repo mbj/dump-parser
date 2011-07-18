@@ -1,12 +1,12 @@
 = dump-parser
 
-I found my self to do this serveral times:
+I found my self doing this serveral times:
 
-* Start a project where I have to import data from legacy (CSV) formats.
+* Start a project where I have to import data from legacy (CSV) formats
 * Need to parse strings into various formats (Date,Time,Integer,Symbols,Domain-Specific)
 * There are many (more than 40) string based conversion formats per project
-* Maintaining this domain knowlege on a per project base.
-* Really hate to maintain a dsl free big clumb of sequencial and repeating code.
+* Maintaining this domain knowlege consistent and error free over project livetime
+* Really hate to maintain "a dsl free big clumb of sequencial and self repeating code"
 
 Goal of this gem is to provide a clean DSL to parse strings (CSV fields) into usable objects.
 
@@ -20,14 +20,19 @@ Goal of this gem is to provide a clean DSL to parse strings (CSV fields) into us
     begin
       DateTime.new(match[3].to_i,match[2].to_i,match[1].to_i)
     rescue ArgumentError
-      error 'invalid format'
+      error 'is invalid date'
     end
+  end
+
+  DumpParser.register :required_integer do
+    require_format %r(\A\d+\Z)
+    value.to_i(10)
   end
 
   DumpParser.execute :dd_mm_yyyy_date_time, ""  # returns nil
   DumpParser.execute :dd_mm_yyyy_date_time, "10.01.1901"  # returns DateTime.new(1901,01,10)
-  DumpParser.execute :dd_mm_yyyy_date_time, "invalid"     # raises DumpParser::InvalidValueException.new('dd_mm_yyyy_date: value "invalid" is invalid')
-  DumpParser.execute :dd_mm_yyyy_date_time, "31.02.2011"  # raises DumpParser::InvalidValueException.new('dd_mm_yyyy_date: value "31.02.2011" is invalid')
+  DumpParser.execute :dd_mm_yyyy_date_time, "invalid"     # raises DumpParser::ParseException.new('dd_mm_yyyy_date: value "invalid" does not match required format')
+  DumpParser.execute :dd_mm_yyyy_date_time, "31.02.2011"  # raises DumpParser::ParseException.new('dd_mm_yyyy_date: value "31.02.2011" is invalid date')
 
 == Contributing to dump-parser
  
@@ -43,4 +48,3 @@ Goal of this gem is to provide a clean DSL to parse strings (CSV fields) into us
 
 Copyright (c) 2011 Markus Schirp. See LICENSE.txt for
 further details.
-
