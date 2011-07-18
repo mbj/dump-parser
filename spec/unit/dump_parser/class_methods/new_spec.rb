@@ -25,5 +25,13 @@ describe DumpParser, '.new' do
 
     it_should_behave_like 'a dump parser'
   end
+
+  context 'without name and block' do
+    let(:arguments) { [name] }
+
+    it do
+      expect { subject }.to raise_error(ArgumentError,'need map block or both')
+    end
+  end
 end
 
