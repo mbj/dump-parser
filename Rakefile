@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "dump-parser"
   gem.homepage = "http://github.com/mbj/dump-parser"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Simple string2value DSL}
+  gem.description = %Q{Provides an easy way to manage a huge amount of domain specific string2value conversions. Mostly useful to convert legacy CSV-Fields from strings with domain specific rules}
   gem.email = "mbj@seonic.net"
   gem.authors = ["Markus Schirp"]
   # dependencies defined in Gemfile
