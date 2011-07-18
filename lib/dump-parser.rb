@@ -93,6 +93,11 @@ class DumpParser
 
   class << self
 
+    def execute(name,value)
+      parser = lookup name
+      parser.execute(value)
+    end
+
     def register(name,map=nil,&block)
       if has_parser? name
         raise ArgumentError,"a parser named #{name.inspect} is already registred"
