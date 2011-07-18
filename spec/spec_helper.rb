@@ -9,6 +9,5 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 require 'reek/spec'
 RSpec.configure do |config|
-  
   config.include Reek::Spec
 end
