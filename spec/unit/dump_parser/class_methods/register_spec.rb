@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe DumpParser, '.register' do
   let(:object)      { described_class }
-  let(:name)        { :test }
+  let(:name)        { 'test' }
   let(:block)       { nil }
   let(:map)         { nil }
   let(:parser)      { Object.new }
@@ -48,7 +48,7 @@ describe DumpParser, '.register' do
 
   context 'name was already regsitred' do
     specify do
-      expect { object.register name,{} }.to raise_error(ArgumentError,"a parser named :test is already registred")
+      expect { object.register name,{} }.to raise_error(ArgumentError,'a parser named "test" is already registred')
     end
   end
 end

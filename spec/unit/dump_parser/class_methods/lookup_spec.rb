@@ -6,7 +6,6 @@ describe DumpParser do
 
   let(:name) { :test }
 
-  let(:lookup_name) { name }
   
 
   before :each do
@@ -19,11 +18,19 @@ describe DumpParser do
   context 'when requested parser was not registred' do
     let(:lookup_name) { :unkown }
     specify do
-      expect { subject }.to raise_error(ArgumentError,'a parser named :unkown is not registred')
+      expect { subject }.to raise_error(ArgumentError,'a parser named "unkown" is not registred')
     end
   end
 
   context 'when requested parser was registred' do
-    it { should == parser }
+    context 'and name was given as string' do
+      let(:lookup_name) { 'test' }
+      it { should == parser }
+    end
+
+    context 'and name was given as symbol' do
+      let(:lookup_name) { name }
+      it { should == parser }
+    end
   end
 end

@@ -108,6 +108,7 @@ class DumpParser
     end
 
     def register(name,map=nil,&block)
+      name = name.to_s
       if has_parser? name
         raise ArgumentError,"a parser named #{name.inspect} is already registred"
       end
@@ -116,13 +117,14 @@ class DumpParser
     end
 
     def lookup(name)
+      name = name.to_s
       registry[name] || raise(ArgumentError,"a parser named #{name.inspect} is not registred")
     end
 
     alias :[] :lookup
 
     def has_parser?(name)
-      registry.key? name
+      registry.key? name.to_s
     end
 
     def reset!

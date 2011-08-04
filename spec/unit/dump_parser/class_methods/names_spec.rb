@@ -14,7 +14,7 @@ describe DumpParser, '.names' do
       object.register :test, {}
     end
    
-    it { should == [:test] }
+    it { should == %w(test) }
   end
 
   context 'when no parser was registred' do
@@ -29,7 +29,7 @@ describe DumpParser, '.names' do
     end
 
     it 'should return parser names in registration order' do
-      should == [:a,:b,:c]
+      should == %w(a b c)
     end
   end
 end
