@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dump-parser}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Markus Schirp"]
-  s.date = %q{2011-07-18}
+  s.date = %q{2011-08-04}
   s.description = %q{Provides an easy way to manage a huge amount of domain specific string2value conversions. Mostly useful to convert legacy CSV-Fields from strings with domain specific rules}
   s.email = %q{mbj@seonic.net}
   s.extra_rdoc_files = [
@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
     "spec/integration/dump-parser_spec.rb",
     "spec/quality/dump-parser_spec.rb",
     "spec/spec_helper.rb",
+    "spec/unit/dsl_spec.rb",
     "spec/unit/dump_parser/class_methods/execute_spec.rb",
     "spec/unit/dump_parser/class_methods/has_parser_spec.rb",
     "spec/unit/dump_parser/class_methods/lookup_spec.rb",
@@ -37,7 +38,6 @@ Gem::Specification.new do |s|
     "spec/unit/dump_parser/class_methods/new_spec.rb",
     "spec/unit/dump_parser/class_methods/register_spec.rb",
     "spec/unit/dump_parser/class_methods/reset_spec.rb",
-    "spec/unit/dump_parser/execute_spec.rb",
     "spec/unit/dump_parser_spec.rb"
   ]
   s.homepage = %q{http://github.com/mbj/dump-parser}
