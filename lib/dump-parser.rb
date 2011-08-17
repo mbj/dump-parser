@@ -19,7 +19,7 @@ class DumpParser
 
   def execute(value)
     unless value.kind_of? String
-      raise '+value+ must be kind of String'
+      raise ArgumentError.new("#{name}: parse input \"#{value.inspect}\" must be kind of String")
     end
     @value = value
     begin

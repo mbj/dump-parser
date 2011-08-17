@@ -32,10 +32,10 @@ describe DumpParser, '#execute' do
 
   context 'with block' do
     context 'when no string was given' do
-      let(:value) { Object.new }
+      let(:value) { nil }
       let(:block) { Proc.new {} }
       specify do
-        expect { subject }.to raise_error(RuntimeError,'+value+ must be kind of String')
+        expect { subject }.to raise_error(ArgumentError,'test: parse input "nil" must be kind of String')
       end
     end
 
