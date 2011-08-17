@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dump-parser}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Markus Schirp"]
-  s.date = %q{2011-08-04}
+  s.authors = [%q{Markus Schirp}]
+  s.date = %q{2011-08-17}
   s.description = %q{Provides an easy way to manage a huge amount of domain specific string2value conversions. Mostly useful to convert legacy CSV-Fields from strings with domain specific rules}
   s.email = %q{mbj@seonic.net}
   s.extra_rdoc_files = [
@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     ".rspec",
+    ".travis.yml",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
@@ -41,9 +42,9 @@ Gem::Specification.new do |s|
     "spec/unit/dump_parser_spec.rb"
   ]
   s.homepage = %q{http://github.com/mbj/dump-parser}
-  s.licenses = ["MIT"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
+  s.licenses = [%q{MIT}]
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.6}
   s.summary = %q{Simple string2value DSL}
 
   if s.respond_to? :specification_version then
