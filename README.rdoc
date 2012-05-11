@@ -1,12 +1,12 @@
 = dump-parser
 
-I found my self doing this serveral times:
+I found my self doing this several times:
 
 * Start a project where I have to import data from legacy (CSV) formats
 * Need to parse strings into various formats (Date,Time,Integer,Symbols,Domain-Specific)
 * There are many (more than 40) string based conversion formats per project
-* Maintaining this domain knowlege consistent and error free over project livetime
-* Really hate to maintain "a dsl free big clumb of sequencial and self repeating code"
+* Maintaining this domain knowledge consistent and error free over project lifetime
+* Really hate to maintain "a DSL free big clump of sequential and self repeating code"
 
 Goal of this gem is to provide a clean DSL to parse strings (CSV fields) into usable objects.
 
@@ -46,5 +46,5 @@ Goal of this gem is to provide a clean DSL to parse strings (CSV fields) into us
 
 == Copyright
 
-Copyright (c) 2011 Markus Schirp. See LICENSE.txt for
+Copyright (c) 2011 Markus Schirp. See LICENSE for
 further details.
