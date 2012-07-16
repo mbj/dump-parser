@@ -1,16 +1,29 @@
 require 'spec_helper'
 
 describe DumpParser,'.execute' do
-  let(:object)     { described_class }
+  subject { object.execute(name,input) }
 
-  let(:name)       { :test }
-  let(:value)      { 'value' }
-  let(:parser)     { Object.new }
+  let(:name)     { mock('Name')                      }
+  let(:input)    { 'Input'                           }
+  let(:parser)   { mock('Parser',:execute => result) }
+  let(:result)   { mock('Result')                    }
+  let(:object)   { described_class                   }
 
+  before do
+    object.stub(:lookup => parser)
+  end
+  
+  it 'should return result' do
+    should be(result)
+  end
 
-  it 'should lookup and execute the parser' do
-    DumpParser.should_receive(:lookup).with(name).and_return(parser)
-    parser.should_receive(:execute).with(value).and_return(nil)
-    DumpParser.execute(name,value).should be_nil
+  it 'should lookup parser with name' do
+    object.should_receive(:lookup).with(name).and_return(parser)
+    should be(result)
+  end
+
+  it 'should execute parser with input' do
+    parser.should_receive(:execute).with(input).and_return(result)
+    should be(result)
   end
 end

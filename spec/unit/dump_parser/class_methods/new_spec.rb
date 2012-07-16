@@ -3,9 +3,9 @@ require 'spec_helper'
 describe DumpParser, '.new' do
   subject { object.new(*arguments) }
 
-  let(:name)      { :test }
-  let(:map)       { {} }
-  let(:block)     { lambda {}  }
+  let(:name)      { :test     }
+  let(:map)       { {}        }
+  let(:block)     { lambda {} }
 
   let(:object) { described_class }
 

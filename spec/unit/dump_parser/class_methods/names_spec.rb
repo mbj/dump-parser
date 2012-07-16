@@ -5,7 +5,7 @@ describe DumpParser, '.names' do
   let(:subject) { object.names }
 
   before do
-    DumpParser.reset!
+    DumpParser.reset
   end
 
 
@@ -23,13 +23,11 @@ describe DumpParser, '.names' do
 
   context 'when many parsers where registred' do
     before do
-      object.register :a, {}
-      object.register :b, {}
-      object.register :c, {}
+      object.register(:a, {})
+      object.register(:b, {})
+      object.register(:c, {})
     end
 
-    it 'should return parser names in registration order' do
-      should == %w(a b c)
-    end
+    its(:to_set) { should eql(%w(a b c).to_set) }
   end
 end

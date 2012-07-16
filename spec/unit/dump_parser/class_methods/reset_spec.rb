@@ -1,20 +1,20 @@
 require 'spec_helper'
 
-describe DumpParser, '.reset!' do
-  subject { object }
-  # this is a litte bit stubid but revious tests can leak parsers
-  # will solve this later
+describe DumpParser, '.reset' do
+  subject { object.reset }
+
   before do
-    object.reset!
+    object.reset
   end
+
   let(:object)           { DumpParser }
   let(:name)             { :test }
 
   before do
     object.register(name) { "value" }
-    object.reset!
+    object.reset
   end
 
-  it { should_not have_parser(name) }
-  its(:names) { should == [] }
+  it { should_not be_present(name) }
+  its(:names) { should eql([]) }
 end
