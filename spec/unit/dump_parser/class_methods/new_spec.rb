@@ -11,6 +11,7 @@ describe DumpParser, '.new' do
 
   shared_examples_for 'a dump parser' do
     it { should be_instance_of(object) }
+    it { should be_frozen }
     its(:name) { should == name }
   end
 

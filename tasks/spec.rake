@@ -30,16 +30,17 @@ rescue LoadError
   end
 end
 
-begin
-  desc "Generate code coverage"
-  RSpec::Core::RakeTask.new(:rcov) do |t|
-    t.rcov      = true
-    t.rcov_opts = File.read('spec/rcov.opts').split(/\s+/)
-  end
-rescue LoadError
-  task :rcov do
-    abort 'rcov is not available. In order to run rcov, you must: gem install rcov'
-  end
-end
+
+# begin
+#   desc "Generate code coverage"
+#   RSpec::Core::RakeTask.new(:rcov) do |t|
+#     t.rcov      = true
+#     t.rcov_opts = File.read('spec/rcov.opts').split(/\s+/)
+#   end
+# rescue LoadError
+#   task :rcov do
+#     abort 'rcov is not available. In order to run rcov, you must: gem install rcov'
+#   end
+# end
 
 task :test => 'spec'

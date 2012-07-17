@@ -3,9 +3,9 @@ require 'spec_helper'
 describe DumpParser,'#block' do
   subject { object.block }
 
-  let(:name)   { :test                                }
-  let(:object) { described_class.new(name,map,&block) }
-  let(:map)    { {}                                   }
+  let(:name)   { :test                               }
+  let(:object) { described_class.new(name,map,block) }
+  let(:map)    { {}                                  }
 
   context 'parser has block' do
     let(:block) { proc {} }

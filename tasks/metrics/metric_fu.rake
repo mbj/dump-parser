@@ -6,19 +6,19 @@ begin
   MetricFu::Saikuro.class_eval { include FileUtils }
 
   MetricFu::Configuration.run do |config|
-    config.rcov = {
-      :environment => 'test',
-      :test_files  => %w[ spec/**/*_spec.rb ],
-      :rcov_opts   => %w[
-        --sort coverage
-        --no-html
-        --text-coverage
-        --no-color
-        --profile
-        --exclude spec/,^/
-        --include lib:spec
-      ],
-    }
+  # config.rcov = {
+  #   :environment => 'test',
+  #   :test_files  => %w[ spec/**/*_spec.rb ],
+  #   :rcov_opts   => %w[
+  #     --sort coverage
+  #     --no-html
+  #     --text-coverage
+  #     --no-color
+  #     --profile
+  #     --exclude spec/,^/
+  #     --include lib:spec
+  #   ],
+  # }
   end
 rescue LoadError
   namespace :metrics do

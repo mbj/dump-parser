@@ -20,4 +20,12 @@ describe DumpParser,'#execute' do
     DumpParser::Executor.should_receive(:new).with(object,input).and_return(executor)
     should be(result)
   end
+
+  context 'with non string input' do
+    let(:input) { Object.new }
+
+    it 'should raise error' do
+      expect { subject }.to raise_error(DumpParser::ParseError,"test: #{input.inspect} must be kind of String")
+    end
+  end
 end

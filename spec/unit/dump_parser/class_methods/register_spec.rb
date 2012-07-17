@@ -3,12 +3,11 @@
 require 'spec_helper'
 
 describe DumpParser, '.register' do
-  subject { object.register(name,map,&block) }
+  subject { object.register(name,*arguments,&block) }
 
   let(:object)      { described_class }
   let(:name)        { 'test' }
-  let(:block)       { nil }
-  let(:map)         { nil }
+  let(:map)         { {} }
   let(:parser)      { mock('Parser') }
 
   before do
@@ -24,19 +23,35 @@ describe DumpParser, '.register' do
   end
 
   context 'with block' do
-    let(:block) { lambda { 'value' } }
-    it_should_behave_like 'a parser registration'
+    let(:arguments) { [] }
+    let(:block)     { lambda { 'value' } }
+
+    it 'should create parser' do
+      described_class.should_receive(:new).with(name,nil,block).and_return(parser)
+      subject
+    end
   end
 
   context 'with map' do
-    let(:map)   { {} }
+    let(:arguments) { [map] }
+    let(:block)     { nil }
     it_should_behave_like 'a parser registration'
+
+    it 'should create parser' do
+      described_class.should_receive(:new).with(name,map,nil).and_return(parser)
+      subject
+    end
   end
 
   context 'with map and block' do
-    let(:block) { lambda { 'value' } }
-    let(:map)   { {} }
+    let(:arguments) { [map] }
+    let(:block)     { lambda { 'value' } }
     it_should_behave_like 'a parser registration'
+
+    it 'should create parser' do
+      described_class.should_receive(:new).with(name,map,block).and_return(parser)
+      subject
+    end
   end
 
   context 'name was already regsitred' do

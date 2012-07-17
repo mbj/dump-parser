@@ -182,9 +182,11 @@ class DumpParser
   # @api private
   #
   def self.registry
-    @registry ||= {}
+    REGISTRIES[self] ||= {}
   end
   private_class_method :registry
+
+  REGISTRIES = {}
 end
 
 require 'dump_parser/executor'
