@@ -3,7 +3,7 @@
 require File.expand_path('../lib/dump_parser/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.name        = 'dump_parser'
+  gem.name        = 'dump-parser'
   gem.version     = DumpParser::VERSION.dup
   gem.authors     = [ 'Markus Schirp' ]
   gem.email       = [ 'mbj@seonic.net' ]
