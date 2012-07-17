@@ -9,10 +9,10 @@ describe DumpParser,'.lookup' do
   end
 
   context 'when requested parser was not registred' do
-    let(:name) { :unkown }
+    let(:name) { :unknown }
 
     specify do
-      expect { subject }.to raise_error(ArgumentError,'a parser named "unkown" is not registred')
+      expect { subject }.to raise_error(ArgumentError,'a parser named "unknown" is not registred')
     end
   end
 
