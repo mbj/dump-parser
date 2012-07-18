@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-describe DumpParser::Executor,'.new' do
+describe DumpParser::Executor, '.new' do
   subject { response }
 
-  let(:response) { object.new(parser,input) }
+  let(:response) { object.new(parser, input) }
 
-  let(:object) { described_class                                           }
-  let(:parser) { mock('Parser',:block => block,:map => map,:name => :test) }
-  let(:input)  { mock('Input')                                             }
-  let(:output) { mock('Output')                                            }
-  let(:block)  { proc { fetch_map }                                        }
-  let(:map)    { { input => output }                                       }
+  let(:object) { described_class                                              }
+  let(:parser) { mock('Parser', :block => block, :map => map, :name => :test) }
+  let(:input)  { mock('Input')                                                }
+  let(:output) { mock('Output')                                               }
+  let(:block)  { proc { fetch_map }                                           }
+  let(:map)    { { input => output }                                          }
 
   it 'should be frozen' do 
     should be_frozen
@@ -30,7 +30,7 @@ describe DumpParser::Executor,'.new' do
       context 'when value was not in map' do
         let(:input) { 'invalid' }
         specify do
-          expect { subject }.to raise_error(DumpParser::ParseError,'test: with input "invalid" is not valid')
+          expect { subject }.to raise_error(DumpParser::ParseError, 'test: with input "invalid" is not valid')
         end
       end
     end
@@ -44,7 +44,7 @@ describe DumpParser::Executor,'.new' do
         let(:map) { nil }
 
         it 'should raise error' do
-          expect { subject }.to raise_error(DumpParser::ParseError,"test: with input #{input.inspect} this parser does not have a map")
+          expect { subject }.to raise_error(DumpParser::ParseError, "test: with input #{input.inspect} this parser does not have a map")
         end
       end
     end
@@ -86,7 +86,7 @@ describe DumpParser::Executor,'.new' do
         context 'when empty' do
           let(:input) { '' }
           specify do 
-            expect { subject }.to raise_error(DumpParser::ParseError,'test: with input "" must not be empty')
+            expect { subject }.to raise_error(DumpParser::ParseError, 'test: with input "" must not be empty')
           end
         end
 
@@ -104,7 +104,7 @@ describe DumpParser::Executor,'.new' do
         end
 
         it 'should raise error' do
-          expect { subject }.to raise_error(DumpParser::ParseError,"test: with input #{input.inspect} no current match available")
+          expect { subject }.to raise_error(DumpParser::ParseError, "test: with input #{input.inspect} no current match available")
         end
       end
 
@@ -137,7 +137,7 @@ describe DumpParser::Executor,'.new' do
           let(:input) { 'invalid' }
           specify do
             expect { subject }.to(
-              raise_error(DumpParser::ParseError,'test: with input "invalid" does not match required format')
+              raise_error(DumpParser::ParseError, 'test: with input "invalid" does not match required format')
             )
           end
         end

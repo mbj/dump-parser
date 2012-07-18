@@ -16,7 +16,7 @@ GIT
 PATH
   remote: .
   specs:
-    dump_parser (0.0.3)
+    dump-parser (0.0.4)
       backports
 
 GEM
@@ -124,7 +124,7 @@ PLATFORMS
 
 DEPENDENCIES
   arrayfields (~> 4.7.4)
-  dump_parser!
+  dump-parser!
   fattr (~> 2.2.0)
   flay (~> 1.4.2)
   flog (~> 2.5.1)

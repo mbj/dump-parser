@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe DumpParser,'.present?' do
+describe DumpParser, '.present?' do
   let(:object)        { described_class }
   let(:name)          { 'test' }
 
@@ -13,7 +13,7 @@ describe DumpParser,'.present?' do
 
   context 'when parser with name exists' do
     before do
-      object.register name, {}
+      object.register(name, {})
     end
 
     context 'when giving a string' do

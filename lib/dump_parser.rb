@@ -47,12 +47,12 @@ class DumpParser
   #
   def initialize(name, map=nil, block=nil)
     unless block || map
-      raise ArgumentError,'need map block or both'
+      raise ArgumentError, 'need map block or both'
     end
 
     block ||= DEFAULT_BLOCK
 
-    @name,@map,@block = name,map,block
+    @name, @map, @block = name, map, block
 
     freeze
   end
@@ -69,7 +69,7 @@ class DumpParser
     unless value.kind_of?(String)
       raise ParseError.new("#{name}: #{value.inspect} must be kind of String")
     end
-    Executor.new(self,value).result
+    Executor.new(self, value).result
   end
 
   # Execute parser with name and value
@@ -81,7 +81,7 @@ class DumpParser
   #
   # @api private
   #
-  def self.execute(name,value)
+  def self.execute(name, value)
     lookup(name).execute(value)
   end
 
@@ -110,12 +110,12 @@ class DumpParser
   #
   # @api public
   #
-  def self.register(name,map=nil,&block)
+  def self.register(name, map=nil, &block)
     name = name.to_s
     if present?(name)
-      raise ArgumentError,"a parser named #{name.inspect} is already registred"
+      raise ArgumentError, "a parser named #{name.inspect} is already registred"
     end
-    parser = new(name,map,block)
+    parser = new(name, map, block)
     registry[name]=parser
 
     self
@@ -135,7 +135,7 @@ class DumpParser
   def self.lookup(name)
     name = name.to_s
     registry.fetch(name) do
-      raise ArgumentError,"a parser named #{name.inspect} is not registred"
+      raise ArgumentError, "a parser named #{name.inspect} is not registred"
     end
   end
 

@@ -16,13 +16,13 @@ describe DumpParser, '.new' do
   end
 
   context 'with name and map' do
-    let(:arguments) { [name,map] }
+    let(:arguments) { [name, map] }
 
     it_should_behave_like 'a dump parser'
   end
 
   context 'with name map and block' do
-    let(:arguments) { [name,map,block] }
+    let(:arguments) { [name, map, block] }
 
     it_should_behave_like 'a dump parser'
   end
@@ -31,7 +31,7 @@ describe DumpParser, '.new' do
     let(:arguments) { [name] }
 
     it do
-      expect { subject }.to raise_error(ArgumentError,'need map block or both')
+      expect { subject }.to raise_error(ArgumentError, 'need map block or both')
     end
   end
 end

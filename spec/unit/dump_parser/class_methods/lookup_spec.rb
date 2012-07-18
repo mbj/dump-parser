@@ -1,5 +1,6 @@
 require 'spec_helper'
-describe DumpParser,'.lookup' do
+
+describe DumpParser, '.lookup' do
   subject { object.lookup(name) }
 
   let(:object) { described_class }
@@ -12,7 +13,7 @@ describe DumpParser,'.lookup' do
     let(:name) { :unknown }
 
     specify do
-      expect { subject }.to raise_error(ArgumentError,'a parser named "unknown" is not registred')
+      expect { subject }.to raise_error(ArgumentError, 'a parser named "unknown" is not registred')
     end
   end
 

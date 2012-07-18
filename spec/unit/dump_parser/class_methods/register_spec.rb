@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe DumpParser, '.register' do
-  subject { object.register(name,*arguments,&block) }
+  subject { object.register(name, *arguments, &block) }
 
   let(:object)      { described_class }
   let(:name)        { 'test' }
@@ -27,7 +27,7 @@ describe DumpParser, '.register' do
     let(:block)     { lambda { 'value' } }
 
     it 'should create parser' do
-      described_class.should_receive(:new).with(name,nil,block).and_return(parser)
+      described_class.should_receive(:new).with(name, nil, block).and_return(parser)
       subject
     end
   end
@@ -38,7 +38,7 @@ describe DumpParser, '.register' do
     it_should_behave_like 'a parser registration'
 
     it 'should create parser' do
-      described_class.should_receive(:new).with(name,map,nil).and_return(parser)
+      described_class.should_receive(:new).with(name, map, nil).and_return(parser)
       subject
     end
   end
@@ -49,18 +49,18 @@ describe DumpParser, '.register' do
     it_should_behave_like 'a parser registration'
 
     it 'should create parser' do
-      described_class.should_receive(:new).with(name,map,block).and_return(parser)
+      described_class.should_receive(:new).with(name, map, block).and_return(parser)
       subject
     end
   end
 
   context 'name was already regsitred' do
     before do
-      object.register(name,{})
+      object.register(name, {})
     end
 
     it 'should raise error' do
-      expect { object.register(name,{}) }.to raise_error(ArgumentError,'a parser named "test" is already registred')
+      expect { object.register(name, {}) }.to raise_error(ArgumentError, 'a parser named "test" is already registred')
     end
   end
 end

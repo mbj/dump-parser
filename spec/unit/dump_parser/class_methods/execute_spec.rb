@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe DumpParser,'.execute' do
-  subject { object.execute(name,input) }
+describe DumpParser, '.execute' do
+  subject { object.execute(name, input) }
 
-  let(:name)     { mock('Name')                      }
-  let(:input)    { 'Input'                           }
-  let(:parser)   { mock('Parser',:execute => result) }
-  let(:result)   { mock('Result')                    }
-  let(:object)   { described_class                   }
+  let(:name)     { mock('Name')                       }
+  let(:input)    { 'Input'                            }
+  let(:parser)   { mock('Parser', :execute => result) }
+  let(:result)   { mock('Result')                     }
+  let(:object)   { described_class                    }
 
   before do
     object.stub(:lookup => parser)

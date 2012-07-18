@@ -58,7 +58,7 @@ class DumpParser
     #
     # @api private
     #
-    def initialize(parser,input)
+    def initialize(parser, input)
       @parser, @value, @input = parser, input, input
 
       catch(:done) do
@@ -81,8 +81,8 @@ class DumpParser
     #     :value
     #   end
     #
-    #   DumpParser.execute(:can_be_empty,'') # => nil
-    #   DumpParser.execute(:can_be_empty,'1') # => :value
+    #   DumpParser.execute(:can_be_empty, '') # => nil
+    #   DumpParser.execute(:can_be_empty, '1') # => :value
     #
     # @api private
     #
@@ -134,8 +134,8 @@ class DumpParser
     #     :value
     #   end
     #
-    #   DumpParser.execute(:cannot_be_empty,'') # => raises ParseError
-    #   DumpParser.execute(:cannot_be_empty,'1') # => :value
+    #   DumpParser.execute(:cannot_be_empty, '') # => raises ParseError
+    #   DumpParser.execute(:cannot_be_empty, '1') # => :value
     #
     # @api private
     #
@@ -170,8 +170,8 @@ class DumpParser
     #     match[1].to_i(10)
     #   end
     #
-    #   DumpParser.execute(:ugly_format,"foo100") # => 100
-    #   DumpParser.execute(:ugly_format,"foo1")   # raises ParseError
+    #   DumpParser.execute(:ugly_format, "foo100") # => 100
+    #   DumpParser.execute(:ugly_format, "foo1")   # raises ParseError
     #
     # @api private
     #
@@ -201,7 +201,7 @@ class DumpParser
     #     match[1].to_i(10)
     #   end
     #
-    #   DumpParser.execute(:ugly_format,"foo100") # => 100
+    #   DumpParser.execute(:ugly_format, "foo100") # => 100
     #
     # @api private
     #
