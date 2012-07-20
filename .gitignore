@@ -4,3 +4,4 @@
 /.yardoc
 /.bundle
 /tmp
+/Gemfile.lock
